@@ -63,7 +63,7 @@ class Parser(report_sxw.rml_parse):
 
         return opening_balance
 
-    def beginning_balance(self):
+    def beginning_balance(self, account_id):
         beginning_balance = 0.00
         obj_account_move_line = self.pool.get('account.move.line')
         obj_account_period = self.pool.get('account.period')
@@ -78,8 +78,6 @@ class Parser(report_sxw.rml_parse):
 
         fiscalyear_id = data['fiscalyear_id']\
             and data['fiscalyear_id'][0] or False
-        account_id = data['account_id'][0]\
-            and data['account_id'][0] or False
 
         state = data['state']
 
@@ -131,16 +129,12 @@ class Parser(report_sxw.rml_parse):
 
         return beginning_balance
 
-    def get_beginning_balance(self):
-        beginning_balance = self.beginning_balance()
+    def get_beginning_balance(self, account_id):
+        beginning_balance = self.beginning_balance(account_id)
         return Decimal(beginning_balance)
 
     def get_account(self, account_id):
         obj_account = self.pool.get('account.account')
-
-        # data = self.localcontext['data']['form']
-
-        # account_id = data['account_id'][0]
 
         account = obj_account.browse(
             self.cr, self.uid, account_id)
