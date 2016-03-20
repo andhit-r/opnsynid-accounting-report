@@ -99,7 +99,7 @@ class wizard_report_general_ledger(models.TransientModel):
         output_format = ''
 
         datas['form'] = self.read(
-            self.env.cr, self.env.user.id, self.ids)[0]
+            self.ids, [])[0]
 
         if datas['form']['output_format'] == 'xls':
             output_format = 'report_general_ledger_xls'
