@@ -159,6 +159,8 @@ class Parser(report_sxw.rml_parse):
 
         debit = 0.0
         credit = 0.0
+        self.total_debit = 0.0
+        self.total_credit = 0.0
 
         if start_period_id and end_period_id:
             if start_period_id == end_period_id:
