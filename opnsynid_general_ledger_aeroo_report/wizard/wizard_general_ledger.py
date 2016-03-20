@@ -4,7 +4,6 @@
 
 
 from openerp import api, models, fields
-from openerp.tools.translate import _
 
 
 class wizard_report_general_ledger(models.TransientModel):
