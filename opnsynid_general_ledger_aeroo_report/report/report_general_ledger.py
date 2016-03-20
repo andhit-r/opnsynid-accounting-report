@@ -141,7 +141,7 @@ class Parser(report_sxw.rml_parse):
 
         return account
 
-    def get_general_ledger_line(self):
+    def get_general_ledger_line(self, account_id):
         running_balance = 0.00
         running_balance = self.beginning_balance()
         obj_account_move_line = self.pool.get('account.move.line')
@@ -150,8 +150,6 @@ class Parser(report_sxw.rml_parse):
 
         data = self.localcontext['data']['form']
 
-        account_id = data['account_id'][0]\
-            and data['account_id'][0] or False
         start_period_id = data['start_period_id']\
             and data['start_period_id'][0] or False
         end_period_id = data['end_period_id'][0]\
