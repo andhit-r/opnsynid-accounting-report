@@ -147,6 +147,7 @@ class Parser(report_sxw.rml_parse):
         obj_account_move_line = self.pool.get('account.move.line')
         obj_account_period = self.pool.get('account.period')
         obj_account_fiscalyear = self.pool.get('account.fiscalyear')
+        self.lines = []
 
         data = self.localcontext['data']['form']
 
