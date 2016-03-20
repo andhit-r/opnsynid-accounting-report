@@ -92,14 +92,15 @@ class wizard_report_general_ledger(models.TransientModel):
         default='posted',
         )
 
-    @api.multi
-    def button_print_report(self):
-        self.ensure_one()
+    def button_print_report(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+
         datas = {}
         output_format = ''
 
         datas['form'] = self.read(
-            self.ids, [])[0]
+            cr, uid, ids)[0]
 
         if datas['form']['output_format'] == 'xls':
             output_format = 'report_general_ledger_xls'
