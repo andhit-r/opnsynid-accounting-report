@@ -143,7 +143,7 @@ class Parser(report_sxw.rml_parse):
 
     def get_general_ledger_line(self, account_id):
         running_balance = 0.00
-        running_balance = self.beginning_balance()
+        running_balance = self.beginning_balance(account_id)
         obj_account_move_line = self.pool.get('account.move.line')
         obj_account_period = self.pool.get('account.period')
         obj_account_fiscalyear = self.pool.get('account.fiscalyear')
