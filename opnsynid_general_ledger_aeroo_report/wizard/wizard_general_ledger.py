@@ -60,7 +60,19 @@ class wizard_report_general_ledger(models.TransientModel):
     account_id = fields.Many2one(
         string='Account',
         comodel_name='account.account',
-        required=True,
+        required=False,
+        domain=[
+            ('type', '!=', 'view'),
+            ('type', '!=', 'consollidation'),
+            ('type', '!=', 'closed')
+        ])
+
+    account_ids = fields.Many2many(
+        string='Accounts',
+        comodel_name='account.account',
+        rel='rel_wzd_general_ledger_2_acc',
+        column1='wizard_id',
+        column2='account_id',
         domain=[
             ('type', '!=', 'view'),
             ('type', '!=', 'consollidation'),
